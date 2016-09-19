@@ -10,7 +10,6 @@ public class OOPExample {
 		jillian.talk();
 		jordan.talk();
 		joseph.talk();
-		((Sophomore)joseph).savHobby();
 	}
 
 }
