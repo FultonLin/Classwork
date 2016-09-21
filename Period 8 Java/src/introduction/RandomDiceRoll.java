@@ -13,7 +13,8 @@ public class RandomDiceRoll {
 			results[result-1] ++;
 		}
 		for(int i = 0; i <6; i++){
-			System.out.println((i+1)+" appeared "+results[i]+" times.");
+			double percentage = ((int) (1000*(double)results[i]/totalRolls))/10.0;
+			System.out.println((i+1)+" appeared "+ percentage +"%");
 		}
 	}
 	
@@ -29,11 +30,11 @@ public class RandomDiceRoll {
 		double rand = Math.random();
 		int second = (int) (6*rand);
 		int roll = (int) (6*rand);
-		roll++;
-		if(roll == second && roll != 6)
+		if(roll != second && roll != 6)
 		{
 			roll++;
 		}
+		roll++;
 		return roll;
 	}
 }
