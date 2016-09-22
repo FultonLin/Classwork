@@ -13,6 +13,11 @@ public class StringPractice {
 		 promptName();
 		 promptForever();
 	}
+
+	public static void createFields(){
+		input = new Scanner(System.in);
+		user = "";
+	}
 	
 	public static void promptName() {
 		print("Enter your name");
@@ -23,7 +28,7 @@ public class StringPractice {
 				+". You may call me Computer. "
 				+ "We should become friends.");
 	}
-
+	
 	public static void promptForever() {
 		while(true){
 			promptInput();
@@ -35,16 +40,46 @@ public class StringPractice {
 		String userInput = input.nextLine();
 		print("Congratulations! You typed: "+userInput);
 	}
-	
-	public static void createFields(){
-		input = new Scanner(System.in);
-		user = "";
+		
+	public static void print(String s){
+		String printString = s;
+		int cutoff = 10;
+		if(printString.length() > cutoff){
+			for(int i = 0; i*cutoff < s.length(); i++){
+				//append '+='
+				printString += getCut(s, cutoff, i+1)+"\n";
+			}
+		}
+		System.out.println(printString);
 	}
+	
+	private static String getCut(String s, int cutoff, int cut){
+		int cutIndex = cut * cutoff;
+		if(cutIndex > s.length())cutIndex = s.length();
+		String currentCut = s.substring(0, cutIndex);
+		
+		int indexOfLastSpace = currentCut.length()-1;
+		//start at last index, go backwards
+		for(int i = currentCut.length()-1; i>=0; i--){
+			String letter = currentCut.substring(i, i+1);
+			if(letter.equals(" ")){
+				indexOfLastSpace = i;
+				break;
+			}
+		}
+		//shorten the cut to end on a space
+		currentCut = currentCut.substring(0,indexOfLastSpace);
+		return currentCut;
+	}
+	
+	
+	
+	
 	
 	public static void demonstrateStringMethods(){
 		String text1 = new String("Hello World");
 		String text2 = "Hello World";//Same as above
-
+		
 		if(text1.equals(text2)){//instead of using == use .equals
 			System.out.println("These strings are equal:");
 		}
@@ -58,17 +93,5 @@ public class StringPractice {
 		if(word1.compareTo(word2) < 0){
 			print("word1 comes before word2");
 		}
-	}
-		
-	public static void print(String s){
-		String printString = s;
-		int cutoff = 45;
-		if(printString.length() > cutoff){
-			int cut = 1;
-			int cutIndex = cut = cutoff;
-			String currentCut = s.substring(0, cutIndex);
-			printString = currentCut;
-		}
-		System.out.println(printString);
 	}
 }
