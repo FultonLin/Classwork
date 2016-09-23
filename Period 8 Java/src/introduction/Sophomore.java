@@ -1,7 +1,6 @@
 package introduction;
 
 public class Sophomore extends Student {
-	private String hobby;
 	
 	public Sophomore(String name, String hobby) {
 		super(name);
