@@ -39,7 +39,7 @@ public class FultonMain {
 			if (findKeyword(response, "good", 0) >= 0) {
 				print("That's wonderful. " + "So glad you feel good.");
 			
-			}else if(response.indexOf("school") >= 0) {
+			}else if(school.isTriggered(response)) {
 				print("School is great! Tell me about school.");
 				//exit this while loop
 				inMainLoop = false;

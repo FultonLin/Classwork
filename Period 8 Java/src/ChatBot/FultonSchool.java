@@ -20,4 +20,27 @@ public class FultonSchool implements ChatBot {
 
 	}
 
+	public boolean isTriggered(String userInput) {
+		String[] triggers = {"school","class","teacher"};
+		//idea: create a for loop to iterate
+		//through your array to triggers
+		
+//		for(int i = 0; i < triggers.length; i++){
+//			if(FultonMain.findKeyword(userInput, triggers[i], 0) >= 0){
+//			return true;
+//			}
+//			return false;
+//		}
+		
+
+		if(FultonMain.findKeyword(userInput, "class", 0) >= 0){
+			return true;
+		}
+
+		if(FultonMain.findKeyword(userInput, "school", 0) >= 0){
+			return true;
+		}
+		return false;
+	}
+
 }
