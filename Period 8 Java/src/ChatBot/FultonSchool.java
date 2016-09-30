@@ -14,7 +14,7 @@ public class FultonSchool implements ChatBot {
 			if(schoolResponse.indexOf("quit") >= 0){
 				inSchoolLoop = false;
 				FultonMain.promptForever();
-			}
+			} 
 			FultonMain.print("That's my favorite part about school");
 		}
 
@@ -25,12 +25,12 @@ public class FultonSchool implements ChatBot {
 		//idea: create a for loop to iterate
 		//through your array to triggers
 		
-//		for(int i = 0; i < triggers.length; i++){
-//			if(FultonMain.findKeyword(userInput, triggers[i], 0) >= 0){
-//			return true;
-//			}
-//			return false;
-//		}
+		for(int i = 0; i < triggers.length; i++){
+			if(FultonMain.findKeyword(userInput, triggers[i], 0) >= 0){
+			return true;
+			}
+			return false;
+		}
 		
 
 		if(FultonMain.findKeyword(userInput, "class", 0) >= 0){
