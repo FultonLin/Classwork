@@ -29,7 +29,6 @@ public class FultonSchool implements ChatBot {
 			if(FultonMain.findKeyword(userInput, triggers[i], 0) >= 0){
 			return true;
 			}
-			return false;
 		}
 		
 
