@@ -1,8 +1,8 @@
 package arrays;
 
 public class ArrayMethods {
-	public static void main(String[] args) {
-	    
+	    public static void main(String[] args) {
+	    	generateDistinctItemsList(5);
 	     /**
 	      * IMPORTANT NOTE: 
 	      * This homework assignment will be weighted 4x.
@@ -39,7 +39,6 @@ public class ArrayMethods {
 	         * */
 	        return false;
 	    }
-	    
 	    
 	    public static double[] getStats(double[] array){
 	        /** 
@@ -84,7 +83,6 @@ public class ArrayMethods {
 	         * */
 	         return 0;
 	    }
-	    
 
 	    public static int longestConsecutiveSequence(int[] array1){
 	        /**This method counts the longest consequtive sequence in an array.
@@ -116,6 +114,25 @@ public class ArrayMethods {
 	    }
 
 	    public static int[] generateDistinctItemsList(int n){
+	    	int[] integers = new int[n];
+	    	
+	    	for(int i = 0; i < integers.length; i++){
+	    		int randomInt = 1+(int)(2*n*Math.random());
+	    		System.out.println(randomInt);
+	    		for(int j = 0; j < integers.length; i++){
+	    			if (integers[j] == randomInt){
+	    				i--;
+	    			}
+	    			else{
+	    				integers[i] = randomInt;
+	    				System.out.println(randomInt);
+	    			}
+	    		}
+	    	}
+	    	for(int j = 0; j < integers.length; j++){
+	    		System.out.println(integers[j]);
+	    	}
+	    	
 	        /**
 	         * This method needs to generate an int[] of length n that contains distinct, random integers
 	         * between 1 and 2n 
@@ -125,7 +142,6 @@ public class ArrayMethods {
 	         * */
 	        return null; 
 	    }
-	    
 	    
 	    public static void cycleThrough(int[] array, int n){
 	        /** This problem represents people moving through a line.
@@ -150,4 +166,5 @@ public class ArrayMethods {
 	         * CHALLENGE
 	         * For extra credit, make your method handle NEGATIVE n
 	         * */
+	    }
 }
