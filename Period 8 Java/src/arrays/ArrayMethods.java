@@ -14,6 +14,11 @@ public class ArrayMethods {
 	    }
 	    
 	    public static int searchUnsorted(int[] arrayToSearch, int key){
+	    	for(int i = 0; i < arrayToSearch.length; i++){
+	    		if(arrayToSearch[i] == key){
+	    			return i;
+	    		}
+	    	}
 	    /**
 	     * this method take an unsorted int array (arrayToSearch) and returns an 
 	     * int corresponding to the index of a key, if it is in the array
@@ -23,6 +28,11 @@ public class ArrayMethods {
 	    }
 	    
 	    public static int searchSorted(int[] sortedArrayToSearch, int key){
+	    	for(int i = sortedArrayToSearch.length; i > 0; i--){
+	    		if(sortedArrayToSearch[i] == key){
+	    			return i;
+	    		}
+	    	}
 	    /**
 	     * this method is exactly like the one above, except the parameter sortedArrayToSearch will
 	     * always be sorted in DESCENDING order. Again return the index of the key or return -1
@@ -34,6 +44,7 @@ public class ArrayMethods {
 	    }
 	    
 	    public static boolean isSorted(int[] array){
+	    	
 	        /**
 	         * This method takes an in array as a parameter and returns 'true' if the array is already sorted in DESCENDING order
 	         * */
@@ -56,6 +67,12 @@ public class ArrayMethods {
 	    }
 	    
 	    public static void reverseOrder(int[] array){
+	        int[] original = array;
+	        for(int i = 0; i < array.length; i++){
+	            for(int j = original.length; j == 0; j--){
+	                array[i] = original[j];
+	            }
+	        } 
 	        /**
 	         * this method reverses the order of the array passed to it.
 	         * Not that this method does not have a return type. You do not need to copy the array first
