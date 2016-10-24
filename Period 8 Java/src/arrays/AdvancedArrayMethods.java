@@ -5,12 +5,10 @@ public class AdvancedArrayMethods {
 	
 	public static void main(String[] args) {
 		String[] array = {"a","b","c","d","e","f","g","h"};
-		shuffle(array);
+		//shuffle(array);
 		
-		
-//		swap(array,0,array.length -1);
-		
-		
+
+//		swap(array,0,array.length -1);	
 		
 //		arrays = new int[100];
 //		int[] someArray = new int[50];
@@ -21,14 +19,38 @@ public class AdvancedArrayMethods {
 		
 //		methodA(someArray);
 	}
-
-	private static void shuffle(Object[] array) {
+	public static int longestSharedSequence(int[] array1, int[] array2){
+		int max = 0;
+		int count = 0;
+		
+		for(int seqStart = 0; seqStart < array1.length; seqStart++){
+			int seqEnd = seqStart;
+			int[] seq = getSequence(seqStart, seqEnd, array1);
+			if(checkSequence(seq, array2)){
+				count++;
+				if(count > max){
+					max = count;
+				}
+			}
+			//reset the count after every seq has been checked
+			count=0;
+		}
+		
+	}
+	
+	private static boolean checkSequence(int[] seq, int[] array2) {
+		return false;
+	}
+	
+	private static int[] getSequence(int seqStart, int seqEnd, int[] array1){	
+		return null;
+	}
+		private static void shuffle(Object[] array) {
 		for(int i = 0; i < array.length; i++){
 			int random = (int)(Math.random()*6);
 			swap(array, i , random);
 		}
 	}
-
 	private static void swap(Object[] arr, int a, int b){
 		Object placeholder = arr[b];
 		arr[b] = arr[a];
