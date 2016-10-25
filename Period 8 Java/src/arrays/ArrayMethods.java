@@ -67,12 +67,8 @@ public class ArrayMethods {
 	    }
 	    
 	    public static void reverseOrder(int[] array){
-	        int[] original = array;
-	        for(int i = 0; i < array.length; i++){
-	            for(int j = original.length; j == 0; j--){
-	                array[i] = original[j];
-	            }
-	        } 
+	    	
+	    	
 	        /**
 	         * this method reverses the order of the array passed to it.
 	         * Not that this method does not have a return type. You do not need to copy the array first
@@ -132,23 +128,15 @@ public class ArrayMethods {
 
 	    public static int[] generateDistinctItemsList(int n){
 	    	int[] integers = new int[n];
-	    	
-	    	for(int i = 0; i < integers.length; i++){
-	    		int randomInt = 1+(int)(2*n*Math.random());
-	    		System.out.println(randomInt);
-	    		for(int j = 0; j < integers.length; i++){
-	    			if (integers[j] == randomInt){
-	    				i--;
-	    			}
-	    			else{
-	    				integers[i] = randomInt;
-	    				System.out.println(randomInt);
-	    			}
-	    		}
-	    	}
-	    	for(int j = 0; j < integers.length; j++){
-	    		System.out.println(integers[j]);
-	    	}
+	        boolean inLoop = false;
+	        
+	        while(inLoop){
+	        	double rand = ((Math.random())*2*n)+1;
+	        	for(int j = 0; j < integers.length - 1; j++){
+	        		
+	        		
+	        	}
+	        }
 	    	
 	        /**
 	         * This method needs to generate an int[] of length n that contains distinct, random integers
@@ -159,8 +147,18 @@ public class ArrayMethods {
 	         * */
 	        return null; 
 	    }
-	    
+	   
+	    private static void swap(Object[] arr, int a, int b){
+			Object placeholder = arr[b];
+			arr[b] = arr[a];
+			arr[a] = placeholder;
+		}
+	   
 	    public static void cycleThrough(int[] array, int n){
+	    	int key = 0;
+	    	for(int i = 0; i < n; i++){
+	    		
+	    	}
 	        /** This problem represents people moving through a line.
 	         * Once they get to the front of the line, they get what they've been waiting for, then they 
 	         * immediately go to the end of the line and "cycle through" again.

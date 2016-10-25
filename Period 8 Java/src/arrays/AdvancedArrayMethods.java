@@ -24,6 +24,7 @@ public class AdvancedArrayMethods {
 		int count = 0;
 		
 		for(int seqStart = 0; seqStart < array1.length; seqStart++){
+			//!!!! insert a loop here
 			int seqEnd = seqStart;
 			int[] seq = getSequence(seqStart, seqEnd, array1);
 			if(checkSequence(seq, array2)){
@@ -35,17 +36,35 @@ public class AdvancedArrayMethods {
 			//reset the count after every seq has been checked
 			count=0;
 		}
-		
+		return max;
 	}
 	
-	private static boolean checkSequence(int[] seq, int[] array2) {
+	//returns true if seq is found inside array2
+	private static boolean checkSequence(int[] seq, int[] arr){
+		//i checks every value in arr
+		A: for(int i = 0; i < arr.length; i++){
+			//j checks every element in seq
+			B: for(int j = 0; j < seq.length; j++){
+				if(j+i < arr.length && seq[j] != arr[j+i]){
+					//stop for loop
+					j = seq.length;
+					//breaks out of inner-most for loop unless particular for loop is specified (labels "A:"
+					break;
+				}else if(j == seq.length-1){
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 	
+	//returns a sub-array containing the elements
+	//in array1 from seqStart to seqEnd
 	private static int[] getSequence(int seqStart, int seqEnd, int[] array1){	
 		return null;
 	}
-		private static void shuffle(Object[] array) {
+	
+	private static void shuffle(Object[] array){
 		for(int i = 0; i < array.length; i++){
 			int random = (int)(Math.random()*6);
 			swap(array, i , random);
@@ -57,7 +76,7 @@ public class AdvancedArrayMethods {
 		arr[a] = placeholder;
 	}
 	
-	private static void methodA(int[] someArray) {
+	private static void methodA(int[] someArray){
 		int[] newArray = new int[someArray.length];
 	}
 	
