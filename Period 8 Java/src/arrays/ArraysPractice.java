@@ -13,23 +13,66 @@ public class ArraysPractice {
 	static boolean[] boos3;
 	
 	public static void main(String[] args) {
-		//how do you time a process?
-		long currentTime = System.currentTimeMillis();
-		int diceNumber = 4;
+		listPrimes(250);
 		
-		int[] fiftyNumbers = new int[50000];
+//		//how do you time a process?
+//		long currentTime = System.currentTimeMillis();
+//		int diceNumber = 4;
+//		
+//		int[] fiftyNumbers = new int[50000];
 //		populate(fiftyNumbers);
 //		printInt(fiftyNumbers);
 //		randomize(fiftyNumbers,50);
 //		printInt(fiftyNumbers);
-		rollDice(fiftyNumbers,diceNumber);
+//		rollDice(fiftyNumbers,diceNumber);
 //		//count each die roll and provide a percentage
-		countResult(fiftyNumbers,diceNumber);
-		
-		
-		long endTime = System.currentTimeMillis();
-		System.out.println("The process took " + (endTime-currentTime) + "ms." );
+//		countResult(fiftyNumbers,diceNumber);
+//		
+//		
+//		long endTime = System.currentTimeMillis();
+//		System.out.println("The process took " + (endTime-currentTime) + "ms." );
 	}
+	
+	private static void listPrimes(int limit) {
+		int lastToCheck = (int) (Math.sqrt(limit));
+		boolean[] numbers = new boolean[limit + 1];
+		for(int i = 0; i < limit + 1; i++){
+			numbers[i] = true;
+		}
+		//0 and 1 are, by definition, not prime
+		numbers[0] = false;
+		numbers[1] = false;
+		//check all non-"crossed off" numbers (start with 2)
+		for(int prime = 2; prime <= lastToCheck; prime++){
+			if(numbers[prime]){
+				System.out.println("\n" + prime + " is prime. Crossing off: ");
+				for(int i = (int) (Math.pow(prime, 2)); i < limit + 1; i += prime){
+					System.out.print(i + ", ");
+					numbers[i] = false;
+				}
+			}	
+		}
+		//print the primes
+		System.out.println("\nThe primes are:");
+		for(int index = 0; index < numbers.length; index++){
+			if(numbers[index])System.out.print(index + ", ");
+		}
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	private static void countResult(int[] s,int numberOfDice) {
 		int[] numbers = new int[numberOfDice*6];
@@ -72,6 +115,9 @@ public class ArraysPractice {
 			System.out.println(s[i]);
 		}
 	}
+	
+	
+	
 	
 	
 	
