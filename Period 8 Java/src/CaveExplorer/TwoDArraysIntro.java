@@ -107,18 +107,18 @@ public class TwoDArraysIntro {
 
 	private static void makeGrid(String[][] grid) {
 		for(int row = 1; row < grid.length-1; row++){
-			for(int col = 0; col < (int)(grid[row].length/2); col++){
+			for(int col = 0; col < grid[row].length; col++){
 				grid[row][col] = "|__";
 			}
-			for(int c = (int)(grid[row].length/2); c < grid[row].length; c++){
-				grid[row][c] = "__|";
+			for(int c = grid[row].length-1;c < grid[row].length; c++){
+				grid[row][c] = "|__|";
 			}
 		}
 		
 		for(int row = 0; row < grid.length; row++){
 			for(int col = 0; col < grid[row].length; col++){
-				grid[grid.length-1][0] = "|__";
-				grid[grid.length-1][grid[0].length-1] = "__|";
+				grid[grid.length-1][col] = "|__";
+				grid[grid.length-1][grid[0].length-1] = "|";
 				if(grid[row][col] == null){
 					grid[row][col] = "___";
 				}
