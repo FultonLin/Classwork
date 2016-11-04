@@ -21,6 +21,7 @@ public class TwoDArraysIntro {
 				pic[row][col] = " ";
 			}
 		}
+		
 		for(int row = 0; row < arr2D.length; row++){
 			for(int col = 0; col < arr2D[row].length; col++){
 				arr2D[row][col] = "(" + row + ", " + col + ")";
@@ -31,15 +32,17 @@ public class TwoDArraysIntro {
 		treasurei = 4;
 		treasurej = 3;
 		startExploring();
-		
-//		String[][] grid = new String [15][15];
-//		makeGrid(grid);
-//		printPic(grid);
+	
 	}
 	
 	private static void startExploring() {
 		while(true){
-			pic[interpretInput(pic)[0]][interpretInput(pic)[1]] = "x";
+			//String[][] grid = new String [pic.length][pic[0].length];
+			String[][] grid = new String [6][6];
+			makeGrid(grid);
+			printPic(grid);	
+			populate(pic);
+			pic[starti][startj] = "x";
 			printPic(pic);
 			System.out.println("You are in room" + arr2D[starti][startj] + ".");
 			if(starti == treasurei && startj == treasurej){
@@ -52,6 +55,14 @@ public class TwoDArraysIntro {
 			startj = newCoordinates[1];
 		}
 		System.out.println("Congratulations! You found the treasure!!");
+	}
+	
+	private static void populate(String[][] input){
+		for(int row = 0; row < input.length; row++){
+			for(int col = 0; col < input[row].length; col++){
+				input[row][col] = " ";
+			}
+		}
 	}
 
 	private static int[] interpretInput(String input) {
@@ -96,18 +107,23 @@ public class TwoDArraysIntro {
 
 	private static void makeGrid(String[][] grid) {
 		for(int row = 1; row < grid.length-1; row++){
-			for(int col = 0; col < grid[row].length; col++){
-				grid[row][col] = "|  ";
+			for(int col = 0; col < (int)(grid[row].length/2); col++){
+				grid[row][col] = "|__";
+			}
+			for(int c = (int)(grid[row].length/2); c < grid[row].length; c++){
+				grid[row][c] = "__|";
 			}
 		}
 		
 		for(int row = 0; row < grid.length; row++){
 			for(int col = 0; col < grid[row].length; col++){
+				grid[grid.length-1][0] = "|__";
+				grid[grid.length-1][grid[0].length-1] = "__|";
 				if(grid[row][col] == null){
 					grid[row][col] = "___";
 				}
 				if(grid[row][col] == " "){
-					grid[row][col] = "_";
+					grid[row][col] = "___";
 				}
 			}
 		}
