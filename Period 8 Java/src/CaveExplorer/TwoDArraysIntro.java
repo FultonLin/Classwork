@@ -111,7 +111,7 @@ public class TwoDArraysIntro {
 				grid[row][col] = "|__";
 			}
 			for(int c = grid[row].length-1;c < grid[row].length; c++){
-				grid[row][c] = "|__|";
+				grid[row][c] = "|";
 			}
 		}
 		
