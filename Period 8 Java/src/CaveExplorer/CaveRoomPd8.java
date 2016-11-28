@@ -7,8 +7,8 @@ public class CaveRoomPd8{
 	private String contents;
 	private String defaultContents;
 
-	private CaveRoomPd8[] borderingRooms;
-	private Door[] doors; 
+	protected CaveRoomPd8[] borderingRooms;
+	protected Door[] doors; 
 
 	public static final int NORTH = 0;
 	public static final int EAST = 1;
@@ -124,7 +124,11 @@ public class CaveRoomPd8{
 				break;
 			}
 		}
-		if(borderingRooms[indexFound] != null && doors[indexFound] != null && doors[indexFound].isOpen()){
+		goToRoom(indexFound);
+	}
+	
+	public void goToRoom(int indexFound){
+				if(borderingRooms[indexFound] != null && doors[indexFound] != null && doors[indexFound].isOpen()){
 			CaveExplorer.currentRoom.leave();
 			CaveExplorer.currentRoom = borderingRooms[indexFound];
 			CaveExplorer.currentRoom.enter();

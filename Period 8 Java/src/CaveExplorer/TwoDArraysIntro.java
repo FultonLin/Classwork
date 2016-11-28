@@ -14,25 +14,26 @@ public class TwoDArraysIntro {
 
 	
 	public static void main(String[] args) {
-		arr2D = new String[5][5];
-		pic = new String[5][5];
-		for(int row = 0; row < pic.length; row++){
-			for(int col = 0; col < pic[row].length; col++){
-				pic[row][col] = " ";
-			}
-		}
-		
-		for(int row = 0; row < arr2D.length; row++){
-			for(int col = 0; col < arr2D[row].length; col++){
-				arr2D[row][col] = "(" + row + ", " + col + ")";
-			}
-		}
-		starti = 2;
-		startj = 2;
-		treasurei = 4;
-		treasurej = 3;
-		startExploring();
+//		arr2D = new String[5][5];
+//		pic = new String[5][5];
+//		for(int row = 0; row < pic.length; row++){
+//			for(int col = 0; col < pic[row].length; col++){
+//				pic[row][col] = " ";
+//			}
+//		}
+//		
+//		for(int row = 0; row < arr2D.length; row++){
+//			for(int col = 0; col < arr2D[row].length; col++){
+//				arr2D[row][col] = "(" + row + ", " + col + ")";
+//			}
+//		}
+//		starti = 2;
+//		startj = 2;
+//		treasurei = 4;
+//		treasurej = 3;
+//		startExploring();
 	
+		mines();
 	}
 	
 	private static void startExploring() {
@@ -130,7 +131,7 @@ public class TwoDArraysIntro {
 	}
 	
 	public static void mines(){
-		boolean[][] mines = new boolean[6][6];
+		boolean[][] mines = new boolean[10][10];
 		plantMines(mines);
 		String[][] field = createField(mines);
 		printPic(field);
@@ -172,10 +173,19 @@ public class TwoDArraysIntro {
 		
 		//this method to allow you to be most specific for example you only want north and east
 		int count = 0;
-		count += isValidAndTrue(mines, row-1, col);
-		count += isValidAndTrue(mines, row+1, col);
-		count += isValidAndTrue(mines, row, col-1);
-		count += isValidAndTrue(mines, row, col+1);
+//		count += isValidAndTrue(mines, row-1, col-1);
+//		count += isValidAndTrue(mines, row-1, col);
+//		count += isValidAndTrue(mines, row-1, col+1);
+//		count += isValidAndTrue(mines, row, col-1);
+//		count += isValidAndTrue(mines, row, col+1);
+//		count += isValidAndTrue(mines, row+1, col-1);
+//		count += isValidAndTrue(mines, row+1, col);
+//		count += isValidAndTrue(mines, row+1, col+1);
+		for(int i = -1; i < 2; i++){
+			for(int j = -1; j < 2; j++){
+				count += isValidAndTrue(mines, row+i, col+j);
+			}
+		}
 		return ""+count;
 	}
 
@@ -186,7 +196,7 @@ public class TwoDArraysIntro {
 	}
 
 	private static void plantMines(boolean[][] mines) {
-		int numberOfMines = 10;
+		int numberOfMines = 40;
 		while(numberOfMines > 0){
 			int row = (int)(Math.random() * mines.length);
 			int col = (int)(Math.random() * mines[0].length);
