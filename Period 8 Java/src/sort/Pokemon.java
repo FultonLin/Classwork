@@ -4,11 +4,11 @@ public class Pokemon {
 
 	private int level;
 	private int hp;
-	private String Name;
+	private String name;
 	private boolean poisoned;
 	
 	public Pokemon(String name, int level){
-		this.Name = name;
+		this.name = name;
 		this.level = level;
 		hp = 100;
 		this.poisoned = false;
@@ -24,9 +24,7 @@ public class Pokemon {
 	}
 	
 	public void iChooseYou(){
-		System.out.println(Name + ", " + Name + "!");
-		System.out.println(Name);
-		System.out.println(Name);
+		System.out.println(name + ", " + name + "!");
 	}
 	
 	public int getHp(){
@@ -34,7 +32,7 @@ public class Pokemon {
 	}
 	
 	public String getName(){
-		return Name;
+		return name;
 	}
 	
 	public void setHp(int newHp){
