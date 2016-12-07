@@ -1,4 +1,4 @@
-package ChatBot;
+package chatBot;
 
 public interface ChatBot {
 	public void talk();

@@ -1,4 +1,4 @@
-package CaveExplorer;
+package caveExplorer;
 
 public class GameStartEvent implements Playable {
 	
