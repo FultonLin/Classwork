@@ -1,6 +1,9 @@
 package guiPractice;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
 public class Screen {
@@ -22,7 +25,23 @@ public class Screen {
 	public void update() {
 		//this is where you draw stuff
 		Graphics2D g = image.createGraphics();
-		g.drawString("Hello", 40, 40);
+		//Smooth out text anti-aliasing
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g.setColor(Color.black);
+		g.setFont(new Font("Helvetica",Font.PLAIN,20));
+		//g.drawObject(x, y, width, height);
+//		g.drawString("Hello", 40, 80);
+		for(int i = 0; i < 5; i ++){
+			g.drawOval(00, 40*i, 120, 80);
+		}
+//		g.drawOval(00, 40*i, 120, 80);
+//		g.drawRect(20, 120, 80, 110);
+//		g.drawLine(100, 120, 110, 200);
+		
+//		g.setColor(Color.green);
+//		for(int i = 0; i < image.getWidth(); i += 2){
+//			g.drawLine(i, 230, i, 238);
+//		}
 	}
 	
 	public BufferedImage getImage(){
