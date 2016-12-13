@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import guiPractice.components.Visible;
@@ -18,8 +20,8 @@ public abstract class Screen {
 		viewObjects = new ArrayList<Visible>();
 		this.width = width;
 		this.height = height;
-		initImage();
 		initObjects(viewObjects);
+		initImage();
 	}
 
 	public abstract void initObjects(ArrayList<Visible> viewObjects);
@@ -27,7 +29,6 @@ public abstract class Screen {
 	private void initImage() {
 		image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		update();
-
 	}
 	
 	public void update() {
@@ -35,6 +36,8 @@ public abstract class Screen {
 		Graphics2D g = image.createGraphics();
 		//Smooth out text anti-aliasing
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g.setColor(Color.white);
+		g.fillRect(0, 0, image.getWidth(), image.getHeight());
 		g.setColor(Color.black);
 		//draw all visible components
 		for(Visible v: viewObjects){
@@ -56,5 +59,13 @@ public abstract class Screen {
 	
 	public BufferedImage getImage(){
 		return image;
+	}
+
+	public MouseListener getMouseListener() {
+		return null;
+	}
+
+	public MouseMotionListener getMouseMotionListener() {
+		return null;
 	}
 }

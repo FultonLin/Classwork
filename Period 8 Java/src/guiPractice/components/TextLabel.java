@@ -21,22 +21,40 @@ public class TextLabel extends Component {
 	
 	public void setText(String s){
 		this.text = s;
+		update();//picture matches the data
 	}
 	
 	public void setSize(int size){
 		this.size = size;
+		update();
 	}
 	
 	public void setFont(String font){
 		this.font = font;
+		update();
 	}
 	
 	@Override
 	public void update(Graphics2D g) {
+		g = clear();//clears the image and gets new graphics
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.black);
-		g.setFont(new Font(font, Font.PLAIN, size));
-		g.drawString(text, 4, getHeight()-5);
+		if(text != null){
+			g.setFont(new Font(font, Font.PLAIN, size));
+			g.drawString(text, 4, getHeight()-5);
+		}
 	}
 
+	public String getText() {
+		return text;
+	}
+
+	public String getFont() {
+		return font;
+	}
+
+	public int getSize() {
+		return size;
+	}
+	
 }
