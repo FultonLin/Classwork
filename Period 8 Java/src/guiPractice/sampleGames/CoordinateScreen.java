@@ -30,7 +30,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 				+ "Notice how as the paragraph gets to the edge of the page, a new line is created.");
 		myButton = new Button(40,200,80,40,"Button", new Color(0,76,153), new Action(){
 			public void act(){
-				
+				MouseFollower.game.setScreen(MouseFollower.myScreen);
 			}
 		});
 		picture = new Graphic(50,50,2,"resources/SampleImages/IDK.png");
@@ -43,8 +43,6 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 		viewObjects.add(picture);
 	}
 	
-	public static MyScreen myScreen;
-
 	public void mouseDragged(MouseEvent arg0) {
 		
 	}
@@ -61,34 +59,25 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 		return this;
 	}
 	
-	@Override
 	public void mouseClicked(MouseEvent m) {
-		if(button.isHovered(m.getX(), m.getY())){
-			button.act();
+		if(myButton.isHovered(m.getX(), m.getY())){
+			myButton.act();
 		}
 	}
 
-	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
