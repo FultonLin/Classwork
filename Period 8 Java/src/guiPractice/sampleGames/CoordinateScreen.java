@@ -19,6 +19,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 	private TextArea paragraph;
 	private Button myButton;
 	private Graphic picture;
+	private MoveScreen move;
 	
 	public CoordinateScreen(int width, int height) {
 		super(width, height);

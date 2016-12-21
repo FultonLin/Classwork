@@ -26,6 +26,13 @@ public class Graphic implements Visible {
 		LoadImages(imageLocation, w, h);
 	}
 
+	public Graphic(int x, int y, String imageLocation){
+		this.x = x;
+		this.y = y;
+		loadedImages = false;
+		LoadImages(imageLocation, 0, 0);
+	}
+	
 	private void LoadImages(String imageLocation, int w, int h) {
 		try{
 			//get the image from file(FULL SIZE)
@@ -86,6 +93,14 @@ public class Graphic implements Visible {
 		return y;
 	}
 
+	public void setX(int x){
+		this.x = x;
+	}
+	
+	public void setY(int y){
+		this.y = y;
+	}
+	
 	@Override
 	public int getWidth() {
 		return image.getWidth();
