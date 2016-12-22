@@ -7,9 +7,9 @@ public class Test2Review {
 	public static void main(String[] args) {
 		grid = new boolean[5][5];
 		printGrid(grid);
-		buttonClick(3,3);
+		buttonClick(4,3);
 		printGrid(grid);
-		buttonClick(3,3);
+		buttonClick(4,3);
 		printGrid(grid);
 	}
 

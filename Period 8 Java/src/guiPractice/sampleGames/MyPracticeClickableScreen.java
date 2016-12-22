@@ -15,12 +15,6 @@ public class MyPracticeClickableScreen extends ClickableScreen {
 		super(width, height);
 		// TODO Auto-generated constructor stub
 	}
-	
-	public static void main(String[] args){
-		MyPracticeClickableScreen idk = new ClickGraphicsScreen();
-		Thread app = new Thread(idk);
-		app.start();
-	}	
 
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		idk = new ClickableGraphic(200,200,.25,"resources/SampleImages/IDK.png");

@@ -108,6 +108,10 @@ public abstract class Screen {
 		}
 	}
 	
+	public void addObject(Visible v){
+		viewObjects.add(v);
+	}
+	
 	public BufferedImage getImage(){
 		return image;
 	}

@@ -25,9 +25,6 @@ public abstract class ClickableScreen extends Screen implements MouseListener{
 	
 	public abstract void initAllObjects(ArrayList<Visible> viewObjects);
 
-	public MouseListener getMouseListeners(){
-		return this;
-	}
 	
 	public void mouseClicked(MouseEvent e) {
 		for(int i = 0; i < clickables.size(); i++){
@@ -38,6 +35,18 @@ public abstract class ClickableScreen extends Screen implements MouseListener{
 		}
 	}
 
+	public void addObject(Visible v){
+		super.addObject(v);
+		if(v instanceof Clickable){
+			clickables.add((Clickable) v);
+		}
+	}
+	
+	public void remove(Visible v){
+		super.remove(v);
+		clickables.remove(v);
+	} 
+	 
 	public void mouseEntered(MouseEvent e) {
 		
 	}
@@ -54,4 +63,7 @@ public abstract class ClickableScreen extends Screen implements MouseListener{
 		
 	}
 
+	public MouseListener getMouseListeners(){
+		return this;
+	}
 }
