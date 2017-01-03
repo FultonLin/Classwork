@@ -27,6 +27,6 @@ public class Player extends Component implements PlayerInterface {
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.setColor(Color.black);
 		g.drawOval(0, 0, 100, 100);
-		g.drawString(""+score,45,55);
+		g.drawString("" + score, 45, 55);
 	}
 }

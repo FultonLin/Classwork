@@ -5,9 +5,9 @@ import guiPractice.components.Clickable;
 
 public interface MoleInterface extends Clickable {
 
-	int getAppearanceTime();
+	double getAppearanceTime();
 
-	void setAppearanceTime(int i);
+	void setAppearanceTime(double i);
 
 	void setAction(Action action);
 }

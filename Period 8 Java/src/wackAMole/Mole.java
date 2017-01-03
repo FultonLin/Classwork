@@ -4,19 +4,19 @@ import guiPractice.components.ClickableGraphic;
 
 public class Mole extends ClickableGraphic implements MoleInterface {
 	
-	private int appearanceTime;
+	private double appearanceTime;
 
 	public Mole(int x, int y) {
-		super(x, y, 1, "resources/SampleImages/mole.jpg");
+		super(x, y, .5, "resources/SampleImages/mole.jpg");
 	}
 	
 	@Override
-	public int getAppearanceTime() {
+	public double getAppearanceTime() {
 		return appearanceTime;
 	}
 
 	@Override
-	public void setAppearanceTime(int d) {
+	public void setAppearanceTime(double d) {
 		this.appearanceTime = d;
 	}
 
