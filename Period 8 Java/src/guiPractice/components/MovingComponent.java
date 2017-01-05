@@ -44,10 +44,16 @@ public class MovingComponent extends Component implements Runnable {
 	public void checkBehaviors() {
 		if(getY() > 300){
 			setY(300);
-			vy*=-1;
+			vy=-1;
 		}else if(getY() < 30){
 			setY(30);
 			vy=3;
+		}else if(getX() > 300){
+			setX(300);
+			vx=-3;
+		}else if(getX() < 1){
+			setX(1);
+			vx=3;
 		}
 	}
 
