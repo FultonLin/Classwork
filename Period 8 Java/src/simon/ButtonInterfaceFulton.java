@@ -1,5 +1,7 @@
 package simon;
 
+import java.awt.Color;
+
 import guiPractice.components.Action;
 import guiPractice.components.Clickable;
 
