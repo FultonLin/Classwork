@@ -3,6 +3,7 @@ package simon;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import guiPractice.components.Action;
 import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
 import guiPractice.components.TextLabel;
@@ -11,6 +12,7 @@ import wackAMole.MoleInterface;
 
 public class SimonScreenFulton extends ClickableScreen implements Runnable {
 	
+		
 	private TextLabel label;
 	private ButtonInterfaceFulton[] button;
 	private ArrayList<MoveInterfaceFulton> sequence; 
@@ -28,7 +30,45 @@ public class SimonScreenFulton extends ClickableScreen implements Runnable {
 
 	@Override
 	public void run() {
-		
+		label.setText("");
+		nextRound();
+	}
+
+	private void nextRound() {
+		acceptingInput = false;
+		roundNumber += 1;
+		ProgressInterfaceFulton.setRound(roundNumber);
+		ProgressInterfaceFulton.setSequenceSize(sequence.size());
+		changeText("Simon's turn");
+		label.setText("");
+		playSequence();
+	}
+
+	private void playSequence() {
+		ButtonInterfaceFulton b = null;
+		for(MoveInterfaceFulton m: sequence){
+			if(b != null){
+				b.dim();
+			}
+			b = m.getButton();
+			b.highlight();
+			try{
+				Thread.sleep((long)(2000*(2.0/(roundNumber+2))));
+			}catch(InterruptedException e){
+				e.printStackTrace();
+			}
+			b.dim();
+		}
+	}
+
+	private void changeText(String s) {
+		try{
+			//better this way for simon game
+			label.setText(s);
+			Thread.sleep(1000);
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -47,18 +87,16 @@ public class SimonScreenFulton extends ClickableScreen implements Runnable {
 	}
 
 	private MoveInterfaceFulton randomMove() {
-		ButtonInterfaceFulton b;
-		int move;
+		int nextMove;
 		while(true){
-			move = (int)(button.length*Math.random()-1);
-			if(move != lastSelectedButton){
+			nextMove = (int)(button.length*Math.random());
+			if(nextMove != lastSelectedButton){
 				break;
 			}
 			//code that randomly selects a ButtonInterfaceX
 		}
-		lastSelectedButton = move;
-		b = button[move];
-		return getMove(b);
+		lastSelectedButton = nextMove;
+		return getMove(button[nextMove]);
 	}
 
 	/**
@@ -70,14 +108,53 @@ public class SimonScreenFulton extends ClickableScreen implements Runnable {
 
 	private void addButtons() {
 		 int numberOfButtons = 5;
+		 button = new ButtonInterfaceFulton[numberOfButtons];
 		 Color[] bColors = {Color.red,Color.blue,Color.green,Color.black,Color.yellow};
+		 
 		 for(int i = 0; i < numberOfButtons; i++){
-			 ButtonInterfaceFulton b;
-			 getAButton(b);
-			 b.setColor(bColors[i]);
-			 b.setX(160 + (int)(100*Math.cos(i*2*Math.PI/(numberOfButtons))));
-			 b.setY(160 + (int)(100*Math.cos(i*2*Math.PI/(numberOfButtons))));
+			 button[i] = getAButton();
+			 button[i].setColor(bColors[i]);
+			 button[i].setX(160 + (int)(100*Math.cos(i*2*Math.PI/(numberOfButtons))));
+			 button[i].setY(160 + (int)(100*Math.cos(i*2*Math.PI/(numberOfButtons))));
+			 final ButtonInterfaceFulton b = button[i];
+			 button[i].setAction(new Action(){
+					public void act(){
+						if(acceptingInput){
+							Thread blink = new Thread(new Runnable(){
+								public void run(){
+									b.highlight();
+									try{
+										Thread.sleep(800);
+									}catch(Exception e){
+										e.printStackTrace();
+									}
+									b.dim();
+								}
+							});
+							blink.start();
+							
+							if(b == sequence.get(sequenceIndex).getButton()){
+								sequenceIndex += 1;
+							}else{
+								gameOver();
+							}
+							if(sequenceIndex == sequence.size()){
+								Thread nextRound = new Thread(SimonScreenFulton.this);
+								nextRound.start();
+							}
+						}
+					}
+
+			 });
+			 viewObjects.add(button[i]);
 		 }
 	}
+	
+	private void gameOver() {
+		progress.gameOver();
+	}
 
+	private ButtonInterfaceFulton getAButton() {
+		return null;
+	}
 }
