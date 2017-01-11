@@ -3,7 +3,7 @@ package guiPractice.components;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-public class MovingComponent extends Component implements Runnable {
+public abstract class MovingComponent extends Component implements Runnable {
 	
 	private double vx;
 	private double vy;
@@ -41,21 +41,7 @@ public class MovingComponent extends Component implements Runnable {
 		}
 	}
 
-	public void checkBehaviors() {
-		if(getY() > 300){
-			setY(300);
-			vy=-1;
-		}else if(getY() < 30){
-			setY(30);
-			vy=3;
-		}else if(getX() > 300){
-			setX(300);
-			vx=-3;
-		}else if(getX() < 1){
-			setX(1);
-			vx=3;
-		}
-	}
+	public abstract void checkBehaviors();
 
 	public void update(Graphics2D g) {
 		long currentTime = System.currentTimeMillis();
@@ -73,10 +59,7 @@ public class MovingComponent extends Component implements Runnable {
 		drawImage(g);
 	}
 	
-	public void drawImage(Graphics2D g) {
-		g.setColor(Color.black);
-		g.fillOval(0, 0, getWidth(), getHeight());
-	}
+	public abstract void drawImage(Graphics2D g);
 
 	public void setX(int x){
 		super.setX(x);
