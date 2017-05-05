@@ -15,6 +15,7 @@ import guiPractice.components.Action;
 import guiPractice.components.AnimatedComponent;
 import guiPractice.components.Button;
 import guiPractice.components.Graphic;
+import guiPractice.components.Moving;
 import guiPractice.components.MovingComponent;
 import guiPractice.components.TextArea;
 import guiPractice.components.TextLabel;
@@ -50,16 +51,16 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 		viewObjects.add(paragraph);
 		viewObjects.add(picture);
 		
-//		MovingComponent mc = new MovingComponent(30,60,80,80);
-//		mc.setVy(3);
-//		mc.play();
-//		viewObjects.add(mc);
+		Moving mc = new Moving(30,60,80,80);
+		mc.setVy(3);
+		mc.play();
+		viewObjects.add(mc);
 		
-		addAnimation(viewObjects);
+//		addAnimation(viewObjects);
 	}
 	
 	private void addAnimation(ArrayList<Visible> viewObjects) {
-		AnimatedComponent a = new AnimatedComponent(40, 50, 300, 300);
+		AnimatedComponent a = new AnimatedComponent(40, 50, 200, 200);
 		try{
 			int numberInRow = 3;
 			int rows = 4;
@@ -71,7 +72,7 @@ public class CoordinateScreen extends Screen implements MouseMotionListener, Mou
 			for(int i = 0; i < numberInRow * rows; i++){
 				//declare the "cropped image"
 				BufferedImage cropped = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-				int leftMargin = 0;
+				int leftMargin = 0; 
 				int topMargin = 0;
 				int x1 = leftMargin + w * (i%numberInRow);
 				int y1 = topMargin + h * (i/numberInRow);

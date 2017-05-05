@@ -11,7 +11,7 @@ import guiPractice.components.Action;
 import guiPractice.components.Button;
 import guiPractice.components.Graphic;
 import guiPractice.components.Visible;
-
+ 
 public class MyScreen extends Screen implements MouseListener, MouseMotionListener{
 	private Graphic mario;
 	private Button back;

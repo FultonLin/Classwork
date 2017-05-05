@@ -1,8 +1,9 @@
 package guiPractice.components;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 
-public abstract class MovingComponent extends Component implements Runnable {
+public class Moving  extends Component implements Runnable {
 	
 	private double vx;
 	private double vy;
@@ -12,8 +13,8 @@ public abstract class MovingComponent extends Component implements Runnable {
 	private long moveTime;//time when the image last moved
 	
 	public static final int REFRESH_RATE = 20;
-
-	public MovingComponent(int x, int y, int w, int h) {
+	
+	public Moving(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		vx = 0;
 		vy = 0;
@@ -40,7 +41,21 @@ public abstract class MovingComponent extends Component implements Runnable {
 		}
 	}
 
-	public abstract void checkBehaviors();
+	public void checkBehaviors() {
+		if(getY() > 300){
+			setY(300);
+			vy=-1;
+		}else if(getY() < 30){
+			setY(30);
+			vy=3;
+		}else if(getX() > 300){
+			setX(300);
+			vx=-3;
+		}else if(getX() < 1){
+			setX(1);
+			vx=3;
+		}
+	}
 
 	public void update(Graphics2D g) {
 		long currentTime = System.currentTimeMillis();
@@ -58,7 +73,10 @@ public abstract class MovingComponent extends Component implements Runnable {
 		drawImage(g);
 	}
 	
-	public abstract void drawImage(Graphics2D g);
+	public void drawImage(Graphics2D g) {
+		g.setColor(Color.black);
+		g.fillOval(0, 0, getWidth(), getHeight());
+	}
 
 	public void setX(int x){
 		super.setX(x);
